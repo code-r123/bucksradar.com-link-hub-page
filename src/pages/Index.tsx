@@ -8,8 +8,8 @@ import {
   Smartphone,
   Youtube,
   Send,
-  TiktokIcon,
 } from 'lucide-react';
+import TikTokIcon from '../components/TikTokIcon';
 
 const Index = () => {
   const links = [
@@ -27,7 +27,7 @@ const Index = () => {
     },
     {
       url: "https://www.tiktok.com/@bucksradar.com",
-      icon: <TiktokIcon size={20} />,
+      icon: <TikTokIcon size={20} />,
       label: "TikTok",
       primary: false,
     },
