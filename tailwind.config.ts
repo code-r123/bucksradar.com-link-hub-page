@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -64,10 +67,9 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				bucksradar: {
-					dark: '#1A1F2C',
-					purple: '#9b87f5',
-					gold: '#D4AF37',
-					accent: '#7E69AB',
+					dark: '#1E1E1E',
+					orange: '#FF6F3C',
+					accent: '#FF8B66',
 					light: '#f8f9fa',
 					gray: '#8E9196',
 				}
@@ -101,17 +103,22 @@ export default {
 				'fade-in': {
 					'0%': { opacity: '0', transform: 'translateY(10px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-subtle': 'pulse-subtle 2s infinite ease-in-out',
-				'fade-in': 'fade-in 0.5s ease-out forwards'
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'float': 'float 5s infinite ease-in-out'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-button': 'linear-gradient(90deg, #9b87f5 0%, #7E69AB 100%)',
+				'gradient-brand': 'linear-gradient(90deg, #FF6F3C 0%, #FF8B66 100%)',
 			}
 		}
 	},

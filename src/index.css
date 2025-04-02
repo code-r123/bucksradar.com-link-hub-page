@@ -3,36 +3,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 12%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 0 0% 15%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --primary: 16 100% 62%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 18%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 16 100% 62%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 16 100% 62%;
     --radius: 0.75rem;
   }
 
   * {
-    @apply border-border selection:bg-bucksradar-purple/10 selection:text-bucksradar-purple;
+    @apply border-border selection:bg-orange-500/20 selection:text-orange-400;
   }
   
   body {
-    @apply bg-bucksradar-dark text-foreground antialiased;
+    @apply bg-[#1E1E1E] text-foreground antialiased font-poppins;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
@@ -41,17 +43,76 @@
   }
 }
 
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+}
+
 @layer utilities {
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+  
   .link-button {
     @apply relative w-full py-3 px-6 rounded-lg font-medium text-white 
     bg-secondary flex items-center justify-between 
     transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg
-    hover:bg-opacity-90 animate-fade-in opacity-0;
+    hover:bg-opacity-90 animate-fade-in opacity-0 overflow-hidden;
     animation-delay: calc(var(--index) * 100ms);
     animation-fill-mode: forwards;
   }
 
-  .primary-button {
-    @apply bg-gradient-button border border-bucksradar-purple/20;
+  .link-button::before {
+    @apply content-[""] absolute left-0 top-0 h-full w-0 bg-orange-500/20 transition-all duration-300;
   }
+
+  .link-button:hover::before {
+    @apply w-full;
+  }
+
+  .primary-button {
+    @apply bg-gradient-brand border border-orange-500/20 shadow-md shadow-orange-500/10;
+  }
+
+  .primary-button:hover {
+    @apply shadow-lg shadow-orange-500/20;
+  }
+}
+
+@layer keyframes {
+  @keyframes pulse-subtle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0) }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer animation {
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s infinite ease-in-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 5s infinite ease-in-out;
+  }
+}
+
+.bg-gradient-brand {
+  @apply bg-gradient-to-r from-orange-500 to-orange-400;
 }
